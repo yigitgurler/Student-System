@@ -67,29 +67,27 @@ def retrieve_student_ui():
     student_id = id_entry.get()
     student_info = retrieve_student(student_id)
 
-    # Clear any previous information displayed
+
     info_text.delete("1.0", tk.END)
 
     if isinstance(student_info, dict):
-        # Student found, display the information
+
         info = f"ID: {student_info['id']}\nName: {student_info['name']}\nAge: {student_info['age']}\nMajor: {student_info['major']}"
         info_text.insert(tk.INSERT, info)
     else:
-        # Display error message if student is not found
         messagebox.showerror("Error", student_info)
 
 def clear_entries():
-    # Clears the entry fields for new inputs
+
     id_entry.delete(0, tk.END)
     name_entry.delete(0, tk.END)
     age_entry.delete(0, tk.END)
     major_entry.delete(0, tk.END)
 
-# Setting up the main window
 root = tk.Tk()
 root.title("University System")
 
-# Creating entry fields
+
 tk.Label(root, text="ID").grid(row=0, column=0)
 id_entry = tk.Entry(root)
 id_entry.grid(row=0, column=1)
@@ -106,7 +104,6 @@ tk.Label(root, text="Major").grid(row=3, column=0)
 major_entry = tk.Entry(root)
 major_entry.grid(row=3, column=1)
 
-# Creating buttons
 add_button = tk.Button(root, text="Add Student", command=add_student_ui)
 add_button.grid(row=4, column=0)
 
